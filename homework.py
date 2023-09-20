@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union, Dict
+from typing import Dict, List, Union
 
 
 @dataclass
@@ -118,7 +118,7 @@ class Swimming(Training):
         return calories
 
 
-def read_package(workout_type: str, data: Union[int, float]) -> Training:
+def read_package(workout_type: str, data: List[Union[int, float]]) -> Training:
     """Прочитать данные полученные от датчиков."""
     types_of_training: Dict[str, Training] = {'SWM': Swimming,
                                               'RUN': Running,
