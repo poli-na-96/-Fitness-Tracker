@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, Dict
 
 
 @dataclass
@@ -120,9 +120,9 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: Union[int, float]) -> Training:
     """Прочитать данные полученные от датчиков."""
-    types_of_training = {'SWM': Swimming,
-                         'RUN': Running,
-                         'WLK': SportsWalking}
+    types_of_training: Dict[str, Training] = {'SWM': Swimming,
+                                              'RUN': Running,
+                                              'WLK': SportsWalking}
     if workout_type in types_of_training:
         return types_of_training[workout_type](*data)
     raise KeyError('Тип тренировки не найден.')
